@@ -3,14 +3,14 @@ import { Routes, Route, BrowserRouter } from "react-router-dom";
 import "./index.css";
 
 import Layout from "./pages/Layout";
-import Home from "./pages/Home";
+import HaircareRoutineGenerator from "./pages/HaircareRoutineGenerator";
 
 function App() {
   return (
     <BrowserRouter>
       <Routes>
         <Route element={<Layout />}>
-          <Route path="/" element={<Home />}></Route>
+          <Route path="/" element={<HaircareRoutineGenerator />}></Route>
         </Route>
       </Routes>
     </BrowserRouter>
