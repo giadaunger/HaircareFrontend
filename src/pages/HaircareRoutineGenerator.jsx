@@ -23,6 +23,10 @@ function HaircareRoutineGenerator() {
       component: <ChosenFocusAre />,
       title: "Choose Your Focus Are",
     },
+    {
+      component: <LastSlide />,
+      title: "Result",
+    },
   ]
   
   const handleNext = () => {
