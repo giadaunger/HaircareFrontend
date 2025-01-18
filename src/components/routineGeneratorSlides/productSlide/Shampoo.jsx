@@ -1,25 +1,25 @@
 import React from 'react'
 import useStore from '../../../stores/store';
 
-function Conditioner() {
+function Shampoo() {
   const { formData, updateFormField } = useStore();
 
   const focusAreas = [
-    "Moisture retention",
-    "Protein balance", 
+    "Dry scalp",
+    "Oily scalp",
+    "Dandruff control",
     "Color protection",
-    "Bleached hair repair",
-    "Split end treatment",
-    "Detangling",
-    "Frizz control",
-    "Volume enhancement",
-    "Heat protection"
+    "Clarifying/Deep cleansing",
+    "Sensitive scalp",
+    "Hair loss prevention",
+    "Volume boosting",
+    "Scalp balancing"
   ];
 
   const handleFocusSelection = (focus) => {
     updateFormField('selectedFocus', {
       ...formData.selectedFocus,
-      conditioner: focus
+      shampoo: focus
     });
   };
 
@@ -31,7 +31,7 @@ function Conditioner() {
             key={focus}
             onClick={() => handleFocusSelection(focus)}
             className={`p-3 rounded-lg border-2 transition-all text-sm ${
-              formData.selectedFocus.conditioner === focus
+              formData.selectedFocus.shampoo === focus
                 ? 'border-[#E2A3B7] bg-[#E2A3B7] text-white scale-95'
                 : 'border-[#E2A3B7] hover:scale-105'
             }`}
@@ -44,4 +44,4 @@ function Conditioner() {
   );
 }
 
-export default Conditioner
+export default Shampoo

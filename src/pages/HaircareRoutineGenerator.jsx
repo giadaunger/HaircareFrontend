@@ -1,14 +1,31 @@
 import React, { useState } from 'react'
 import { ChevronLeft, ChevronRight } from '@styled-icons/fa-solid'
+import useStore from '../stores/store'
 import StartSlide from '../components/routineGeneratorSlides/FirstSlide'
 import HairPorosity from '../components/routineGeneratorSlides/HairPorosity'
 import SelectProduct from '../components/routineGeneratorSlides/SelectProduct'
-import ChosenFocusAre from '../components/routineGeneratorSlides/ChosenFocusAre'
 import LastSlide from '../components/routineGeneratorSlides/LastSlide'
+
+import Shampoo from '../components/routineGeneratorSlides/productSlide/Shampoo'
+import Conditioner from '../components/routineGeneratorSlides/productSlide/Conditioner'
+import HairOil from '../components/routineGeneratorSlides/productSlide/HairOil'
+import ScalpSerum from '../components/routineGeneratorSlides/productSlide/ScalpSerum'
+import HairSerum from '../components/routineGeneratorSlides/productSlide/HairSerum'
+import ScalpScrub from '../components/routineGeneratorSlides/productSlide/ScalpScrub'
 
 
 function HaircareRoutineGenerator() {
   const [currentSlideStep, setCurrentSlideStep] = useState(0);
+  const { formData } = useStore();
+
+  const productComponents = {
+    'shampoo': Shampoo,
+    'conditioner': Conditioner,
+    'hair-oil': HairOil,
+    'scalp-serum': ScalpSerum,
+    'hair-serum': HairSerum,
+    'scalp-scrub': ScalpScrub
+  };
   
   const slides = [
     {
@@ -19,10 +36,10 @@ function HaircareRoutineGenerator() {
       component: <SelectProduct />,
       title: "Select Your Essentials",
     },
-    {
-      component: <ChosenFocusAre />,
-      title: "Choose Your Focus Are",
-    },
+    ...formData.selectedProducts.map(product => ({
+      component: React.createElement(productComponents[product]),
+      title: `Choose Focus Area for ${product.split('-').map(word => word.charAt(0).toUpperCase() + word.slice(1)).join(' ')}`,
+    })),
     {
       component: <LastSlide />,
       title: "Result",
