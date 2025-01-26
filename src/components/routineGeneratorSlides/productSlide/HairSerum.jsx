@@ -6,14 +6,9 @@ function HairSerum() {
 
   const focusAreas = [
     "Anti-frizz",
-    "Shine enhancement",
     "Heat protection",
-    "UV protection",
     "Split end repair",
-    "Smoothing",
     "Color protection",
-    "Detangling",
-    "Strengthening"
   ];
 
   const handleFocusSelection = (focus) => {

@@ -6,14 +6,10 @@ function Conditioner() {
 
   const focusAreas = [
     "Moisture retention",
-    "Protein balance", 
     "Color protection",
-    "Bleached hair repair",
     "Split end treatment",
-    "Detangling",
     "Frizz control",
     "Volume enhancement",
-    "Heat protection"
   ];
 
   const handleFocusSelection = (focus) => {

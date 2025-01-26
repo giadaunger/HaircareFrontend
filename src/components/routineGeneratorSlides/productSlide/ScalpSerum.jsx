@@ -6,14 +6,9 @@ function ScalpSerum() {
 
   const focusAreas = [
     "Hair growth stimulation",
-    "Scalp inflammation relief",
     "Dandruff treatment",
     "Balance oil production",
-    "Strengthen hair follicles",
-    "Scalp hydration",
     "pH balancing",
-    "Soothing sensitive scalp",
-    "Microcirculation boost"
   ];
 
   const handleFocusSelection = (focus) => {

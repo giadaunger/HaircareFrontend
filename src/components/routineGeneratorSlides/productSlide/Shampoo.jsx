@@ -9,11 +9,7 @@ function Shampoo() {
     "Oily scalp",
     "Dandruff control",
     "Color protection",
-    "Clarifying/Deep cleansing",
-    "Sensitive scalp",
-    "Hair loss prevention",
     "Volume boosting",
-    "Scalp balancing"
   ];
 
   const handleFocusSelection = (focus) => {

@@ -5,15 +5,10 @@ function ScalpScrub() {
   const { formData, updateFormField } = useStore();
 
   const focusAreas = [
-    "Dead skin removal",
     "Product buildup removal",
-    "Deep cleansing",
-    "Scalp circulation",
     "Balance oil production",
     "Unclog hair follicles",
-    "Dandruff control",
-    "Clarifying",
-    "Scalp exfoliation"
+    "Hair loss prevention"
   ];
 
   const handleFocusSelection = (focus) => {

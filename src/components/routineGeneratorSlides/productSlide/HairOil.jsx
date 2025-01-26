@@ -9,13 +9,9 @@ function HairOil() {
     "Split end repair",
     "Shine enhancement",
     "Frizz control",
-    "Heat protection",
     "Color preservation",
-    "Scalp nourishment",
-    "Growth stimulation",
-    "Breakage prevention"
   ];
-
+  nourishment
   const handleFocusSelection = (focus) => {
     updateFormField('selectedFocus', {
       ...formData.selectedFocus,
