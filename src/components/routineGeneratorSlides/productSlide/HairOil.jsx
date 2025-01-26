@@ -6,12 +6,12 @@ function HairOil() {
 
   const focusAreas = [
     "Deep hydration",
-    "Split end repair",
+    "Split end treatment",
     "Shine enhancement",
     "Frizz control",
     "Color preservation",
   ];
-  nourishment
+
   const handleFocusSelection = (focus) => {
     updateFormField('selectedFocus', {
       ...formData.selectedFocus,

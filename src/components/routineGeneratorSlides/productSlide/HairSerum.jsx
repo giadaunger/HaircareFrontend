@@ -7,7 +7,7 @@ function HairSerum() {
   const focusAreas = [
     "Anti-frizz",
     "Heat protection",
-    "Split end repair",
+    "Split end treatment",
     "Color protection",
   ];
 

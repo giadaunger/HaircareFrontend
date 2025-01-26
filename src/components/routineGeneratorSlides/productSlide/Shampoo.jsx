@@ -7,9 +7,9 @@ function Shampoo() {
   const focusAreas = [
     "Dry scalp",
     "Oily scalp",
-    "Dandruff control",
+    "Dandruff treatment",
     "Color protection",
-    "Volume boosting",
+    "Volume enhancement",
   ];
 
   const handleFocusSelection = (focus) => {
