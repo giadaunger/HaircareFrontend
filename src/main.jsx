@@ -4,6 +4,7 @@ import "./index.css";
 
 import Layout from "./pages/Layout";
 import HaircareRoutineGenerator from "./pages/HaircareRoutineGenerator";
+import DisplayResult from "./pages/DisplayResult";
 
 function App() {
   return (
@@ -11,6 +12,7 @@ function App() {
       <Routes>
         <Route element={<Layout />}>
           <Route path="/" element={<HaircareRoutineGenerator />}></Route>
+          <Route path="/result" element={<DisplayResult />}></Route>
         </Route>
       </Routes>
     </BrowserRouter>

@@ -6,19 +6,19 @@ function HairPorosity() {
 
   const porosityTypes = [
     {
-      name: 'low',
+      name: 'Low Porosity',
       title: 'Low Porosity',
       description: 'Hair that resists moisture absorption',
       includes: 'Products that are lightweight and can penetrate the hair shaft. Avoid heavy oils and butters.',
     },
     {
-      name: 'medium',
+      name: 'Medium Porosity',
       title: 'Medium Porosity',
       description: 'Hair that maintains good moisture balance',
       includes: 'Most hair products work well. Focus on maintaining the current balance.',
     },
     {
-      name: 'high',
+      name: 'High Porosity',
       title: 'High Porosity',
       description: 'Hair that absorbs moisture quickly but loses it easily',
       includes: 'Rich, moisturizing products and proteins to help seal the cuticle.',

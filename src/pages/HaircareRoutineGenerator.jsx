@@ -1,4 +1,5 @@
 import React, { useState } from 'react'
+import { useNavigate } from 'react-router-dom';
 import { ChevronLeft, ChevronRight } from '@styled-icons/fa-solid'
 import useStore from '../stores/store'
 import StartSlide from '../components/routineGeneratorSlides/FirstSlide'
@@ -15,6 +16,7 @@ import ScalpScrub from '../components/routineGeneratorSlides/productSlide/ScalpS
 
 
 function HaircareRoutineGenerator() {
+  const navigate = useNavigate();
   const [currentSlideStep, setCurrentSlideStep] = useState(0);
   const { formData, error, fetchRecommendations, setIsLoading } = useStore();
 
@@ -62,6 +64,7 @@ function HaircareRoutineGenerator() {
     try {
       setIsLoading(true);
       await fetchRecommendations(formData);
+      navigate('/result');
     } finally {
       setIsLoading(false);
     }
