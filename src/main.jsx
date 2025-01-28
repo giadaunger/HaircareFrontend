@@ -12,7 +12,7 @@ function App() {
       <Routes>
         <Route element={<Layout />}>
           <Route path="/" element={<HaircareRoutineGenerator />}></Route>
-          <Route path="/result" element={<DisplayResult />}></Route>
+          <Route path="/result" element={<DisplayResult /> }></Route>
         </Route>
       </Routes>
     </BrowserRouter>

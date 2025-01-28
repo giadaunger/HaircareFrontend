@@ -12,8 +12,8 @@ function HairPorosity() {
       includes: 'Products that are lightweight and can penetrate the hair shaft. Avoid heavy oils and butters.',
     },
     {
-      name: 'Medium Porosity',
-      title: 'Medium Porosity',
+      name: 'Normal Porosity',
+      title: 'Normal Porosity',
       description: 'Hair that maintains good moisture balance',
       includes: 'Most hair products work well. Focus on maintaining the current balance.',
     },
