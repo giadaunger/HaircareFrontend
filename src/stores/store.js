@@ -27,12 +27,13 @@ const useStore = create((set) => ({
   errorMsg: "",
   setErrorMsg: (value) => set({ errorMsg: value }),
 
+  isLoading: false,
+  setIsLoading: (value) => set({ isLoading: value }),
+
   recommendations: [],
   setRecommendations: (value) => set({ recommendations: value}),
   fetchRecommendations: async () => {
     const { formData } = get();
-    set({ isLoading: true, errorMsg: "" });
-
     try {
       const response = await fetch("http://localhost:8000/recommendations", {
         method: "POST",
@@ -49,8 +50,6 @@ const useStore = create((set) => ({
       set({ recommendations: data });
     } catch (error) {
       set({ errorMsg: "Failed to fetch recommendations" });
-    } finally {
-      set({ isLoading: false });
     }
   },
 }));

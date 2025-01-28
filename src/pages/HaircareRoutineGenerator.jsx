@@ -16,7 +16,7 @@ import ScalpScrub from '../components/routineGeneratorSlides/productSlide/ScalpS
 
 function HaircareRoutineGenerator() {
   const [currentSlideStep, setCurrentSlideStep] = useState(0);
-  const { formData } = useStore();
+  const { formData, error, fetchRecommendations, setIsLoading } = useStore();
 
   const productComponents = {
     'shampoo': Shampoo,
@@ -58,6 +58,15 @@ function HaircareRoutineGenerator() {
     }
   };
 
+  const handleFetchRecommendations = async () => {
+    try {
+      setIsLoading(true);
+      await fetchRecommendations(formData);
+    } finally {
+      setIsLoading(false);
+    }
+  }
+
   return (
     <div className="w-11/12 mx-auto mb-20 mt-20">
       <div className="bg-[#FFDFE9] rounded-xl p-8 w-5/6 mx-auto">
@@ -98,7 +107,9 @@ function HaircareRoutineGenerator() {
           </button>
         </div>
         <div className="justify-center w-full flex mt-10">
-          <button className={`p-2 rounded-xl border border-[#E2A3B7] bg-[#E2A3B7] text-white font-semibold text-xl ${currentSlideStep < slides.length - 1 ? 'invisible' : ''}`}>Create Routine!</button>
+          <button 
+            onClick={handleFetchRecommendations}
+            className={`p-2 rounded-xl border border-[#E2A3B7] bg-[#E2A3B7] text-white font-semibold text-xl ${currentSlideStep < slides.length - 1 ? 'invisible' : ''}`}>Create Routine!</button>
         </div>
       </div>
     </div>
