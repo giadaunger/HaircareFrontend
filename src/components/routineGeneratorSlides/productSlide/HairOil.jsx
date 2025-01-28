@@ -6,7 +6,7 @@ function HairOil() {
 
   const focusAreas = [
     "Deep hydration",
-    "Split end treatment",
+    "Split end repair",
     "Shine enhancement",
     "Frizz control",
     "Color preservation",

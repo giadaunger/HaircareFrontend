@@ -7,7 +7,7 @@ function Conditioner() {
   const focusAreas = [
     "Moisture retention",
     "Color protection",
-    "Split end treatment",
+    "Split end repair",
     "Frizz control",
     "Volume enhancement",
   ];
