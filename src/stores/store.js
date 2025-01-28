@@ -27,6 +27,8 @@ const useStore = create((set) => ({
   errorMsg: "",
   setErrorMsg: (value) => set({ errorMsg: value }),
 
+  recommendations: [],
+  setRecommendations: (value) => set({ recommendations: value}),
   fetchRecommendations: async () => {
     const { formData } = get();
     set({ isLoading: true, errorMsg: "" });
@@ -44,7 +46,7 @@ const useStore = create((set) => ({
       });
 
       const data = await response.json();
-      set({ recommendations: data.recommendations });
+      set({ recommendations: data });
     } catch (error) {
       set({ errorMsg: "Failed to fetch recommendations" });
     } finally {
