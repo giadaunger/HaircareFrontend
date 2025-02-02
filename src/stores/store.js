@@ -79,6 +79,32 @@ const useStore = create((set, get) => ({
       console.error('Error fetching product info:', error);
     }
   },
+
+  shoppingCart: [],
+  
+  addToCart: (product) => 
+    set((state) => ({
+      shoppingCart: [...state.shoppingCart, product]
+    })),
+    
+  addAllRecommendationsToCart: () => {
+    const { recommendations } = get();
+    if (recommendations?.recommendations) {
+      const recommendedProducts = Object.values(recommendations.recommendations)
+        .map(rec => rec.main_recommendation);
+      
+      set((state) => ({
+        shoppingCart: [...state.shoppingCart, ...recommendedProducts]
+      }));
+    }
+  },
+
+  removeFromCart: (productId) =>
+    set((state) => ({
+      shoppingCart: state.shoppingCart.filter(item => item.id !== productId)
+    })),
+
+  clearCart: () => set({ shoppingCart: [] }),
 }));
 
 export default useStore;

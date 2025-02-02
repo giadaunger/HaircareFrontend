@@ -76,6 +76,7 @@ function DisplayResult() {
           </div>
         </div>
       ))}
+      <button>Add new routine to cart!</button>
     </div>
   );
 }
