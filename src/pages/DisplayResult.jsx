@@ -15,8 +15,8 @@ function DisplayResult() {
       {Object.entries(recommendations.recommendations).map(([productType, recommendation]) => (
         <div key={productType} className="mb-14 p-4 flex lg:flex-row flex-col">
           <div className="w-full lg:w-1/2">
-            <h2 className="text-4xl mb-4">{productType} :</h2>
-            <div className="space-y-2 w-full sm:w-1/2 mx-auto bg-blue-200 p-4 rounded">
+            <h2 className="text-4xl mb-4 first-letter:uppercase text-center">{productType}</h2>
+            <div className="space-y-2 w-full sm:w-1/2 mx-auto bg-[#efe9e6] shadow-xl p-4 rounded">
               <img 
                 src="/productPic.png" 
                 alt={recommendation.main_recommendation.product_name}
@@ -27,24 +27,24 @@ function DisplayResult() {
             </div>
           </div>
           <div className="w-full lg:w-1/2">
-            <h2 className="mb-4">Similar products:</h2>
+            <h2 className="mb-4 text-xl">Similar products:</h2>
             <div className="flex flex-col gap-4 xl:flex-row">
               {recommendation.similar_products.map(product => (
-                <div key={product.id} className="flex-1 bg-yellow-200 p-4 rounded">
-                  <div className="flex xl:flex-col items-center">
+                <div key={product.id} className="flex-1 bg-[#efe9e6] shadow-xl p-4 rounded">
+                  <div className="flex xl:flex-col h-full">
                     <img 
                       src="/productPic.png" 
                       alt={product.product_name}
                       className="object-scale-down rounded mb-2 h-32 w-32 xl:w-full"
                     />
-                    <div className="flex flex-col w-full">
+                    <div className="flex flex-col justify-between h-full w-full">
                       <div className="ml-4 xl:ml-0 flex flex-col xl:items-center text-center">
                         <h4 className="font-medium">{product.product_name}</h4>
                         <p className="text-gray-600">{product.company}</p>
                       </div>
-                      <div className="flex justify-between w-1/2 xl:w-full mx-auto">
-                        <AddCircle className="w-10 h-10"/>
-                        <ExternalLinkOutline  className="w-10 h-10"/>
+                      <div className="flex justify-between w-1/2 xl:w-11/12 mx-auto mt-4">
+                        <AddCircle className="w-8 h-8 cursor-pointer hover:opacity-80 transform transition duration-300 hover:scale-125"/>
+                        <ExternalLinkOutline className="w-8 h-8 cursor-pointer hover:opacity-80 transform transition duration-300 hover:scale-125"/>
                       </div>
                     </div>
                   </div>
