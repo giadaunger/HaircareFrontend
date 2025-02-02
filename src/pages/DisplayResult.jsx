@@ -1,13 +1,21 @@
-import React from "react";
+import React, { useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 import useStore from "../stores/store";
 import { AddCircle } from "styled-icons/ionicons-outline";
 import { ExternalLinkOutline } from "styled-icons/evaicons-outline";
 
 function DisplayResult() {
   const { recommendations } = useStore();
+  const navigate = useNavigate();
 
-  if (!recommendations.recommendations) {
-    return <div>No recommendations available</div>;
+  useEffect(() => {
+    if (!recommendations?.recommendations || Object.keys(recommendations.recommendations).length === 0) {
+      navigate('/');
+    }
+  }, [recommendations, navigate]);
+
+  if (!recommendations?.recommendations || Object.keys(recommendations.recommendations).length === 0) {
+    return null;
   }
 
   return (
