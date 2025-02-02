@@ -80,6 +80,9 @@ const useStore = create((set, get) => ({
     }
   },
 
+  isCartOpen: false,
+  setIsCartOpen: (value) => set({ isCartOpen: value }),
+
   shoppingCart: [],
   
   addToCart: (product) => 
@@ -105,6 +108,21 @@ const useStore = create((set, get) => ({
     })),
 
   clearCart: () => set({ shoppingCart: [] }),
+
+  addAllRecommendationsToCart: () => {
+    const { recommendations } = get();
+    if (recommendations?.recommendations) {
+      const recommendedProducts = Object.values(recommendations.recommendations)
+        .map(rec => ({
+          ...rec.main_recommendation,
+          price: 95
+        }));
+      
+      set((state) => ({
+        shoppingCart: [...state.shoppingCart, ...recommendedProducts]
+      }));
+    }
+  },
 }));
 
 export default useStore;

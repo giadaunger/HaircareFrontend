@@ -5,7 +5,7 @@ import { AddCircle } from "styled-icons/ionicons-outline";
 import { ExternalLinkOutline } from "styled-icons/evaicons-outline";
 
 function DisplayResult() {
-  const { recommendations, updateMainRecommendation } = useStore();
+  const { recommendations, updateMainRecommendation, addAllRecommendationsToCart, setIsCartOpen } = useStore();
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -25,6 +25,15 @@ function DisplayResult() {
   const handleAddToRoutine = (productType, product) => {
     updateMainRecommendation(productType, product);
   };
+
+  const handleAddToCart = () => {
+    addAllRecommendationsToCart()
+    setIsCartOpen(true);
+    window.scrollTo({
+      top: 0,
+      behavior: 'smooth'
+    });
+  }
 
   return (
     <div className="w-11/12 sm:w-3/4 mx-auto mb-20 mt-20">
@@ -76,7 +85,7 @@ function DisplayResult() {
           </div>
         </div>
       ))}
-      <button>Add new routine to cart!</button>
+      <button onClick={handleAddToCart}>Add new routine to cart!</button>
     </div>
   );
 }
