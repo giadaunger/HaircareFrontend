@@ -18,6 +18,10 @@ function DisplayResult() {
     return null;
   }
 
+  const handleProductClick = (productId) => {
+    window.open(`/product/${productId}`, '_blank');
+  }
+
   return (
     <div className="w-11/12 sm:w-3/4 mx-auto mb-20 mt-20">
       {Object.entries(recommendations.recommendations).map(([productType, recommendation]) => (
@@ -52,7 +56,10 @@ function DisplayResult() {
                       </div>
                       <div className="flex justify-between w-1/2 xl:w-11/12 mx-auto mt-4">
                         <AddCircle className="w-8 h-8 cursor-pointer hover:opacity-80 transform transition duration-300 hover:scale-125"/>
-                        <ExternalLinkOutline className="w-8 h-8 cursor-pointer hover:opacity-80 transform transition duration-300 hover:scale-125"/>
+                        <ExternalLinkOutline 
+                          className="w-8 h-8 cursor-pointer hover:opacity-80 transform transition duration-300 hover:scale-125"
+                          onClick={() => handleProductClick(product.id)}
+                        />
                       </div>
                     </div>
                   </div>
