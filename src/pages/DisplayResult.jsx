@@ -5,7 +5,7 @@ import { AddCircle } from "styled-icons/ionicons-outline";
 import { ExternalLinkOutline } from "styled-icons/evaicons-outline";
 
 function DisplayResult() {
-  const { recommendations } = useStore();
+  const { recommendations, updateMainRecommendation } = useStore();
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -21,7 +21,10 @@ function DisplayResult() {
   const handleProductClick = (productId) => {
     window.open(`${window.location.origin}/product/${productId}`, '_blank');
   };
-  
+
+  const handleAddToRoutine = (productType, product) => {
+    updateMainRecommendation(productType, product);
+  };
 
   return (
     <div className="w-11/12 sm:w-3/4 mx-auto mb-20 mt-20">
@@ -56,7 +59,10 @@ function DisplayResult() {
                         <p className="text-gray-600">{product.company}</p>
                       </div>
                       <div className="flex justify-between w-1/2 xl:w-11/12 mx-auto mt-4">
-                        <AddCircle className="w-8 h-8 cursor-pointer hover:opacity-80 transform transition duration-300 hover:scale-125"/>
+                        <AddCircle 
+                          className="w-8 h-8 cursor-pointer hover:opacity-80 transform transition duration-300 hover:scale-125"
+                          onClick={() => handleAddToRoutine(productType, product)}
+                        />
                         <ExternalLinkOutline 
                           className="w-8 h-8 cursor-pointer hover:opacity-80 transform transition duration-300 hover:scale-125"
                           onClick={() => handleProductClick(product.id)}

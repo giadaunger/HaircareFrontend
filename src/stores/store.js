@@ -32,6 +32,21 @@ const useStore = create((set, get) => ({
 
   recommendations: [],
   setRecommendations: (value) => set({ recommendations: value}),
+  
+  updateMainRecommendation: (productType, newProduct) => 
+    set((state) => {
+      const updatedRecommendations = { ...state.recommendations };
+      if (updatedRecommendations.recommendations) {
+        const oldMain = updatedRecommendations.recommendations[productType].main_recommendation;
+        updatedRecommendations.recommendations[productType].main_recommendation = newProduct;        
+        updatedRecommendations.recommendations[productType].similar_products = 
+          updatedRecommendations.recommendations[productType].similar_products
+            .filter(p => p.id !== newProduct.id)
+            .concat([oldMain]); 
+      }
+      return { recommendations: updatedRecommendations };
+    }),
+
   fetchRecommendations: async () => {
     const { formData } = get();
     try {
