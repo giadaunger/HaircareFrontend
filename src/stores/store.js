@@ -84,11 +84,6 @@ const useStore = create((set, get) => ({
   setIsCartOpen: (value) => set({ isCartOpen: value }),
 
   shoppingCart: [],
-  
-  addToCart: (product) => 
-    set((state) => ({
-      shoppingCart: [...state.shoppingCart, product]
-    })),
     
   addAllRecommendationsToCart: () => {
     const { recommendations } = get();
