@@ -52,6 +52,18 @@ const useStore = create((set, get) => ({
       set({ errorMsg: "Failed to fetch recommendations" });
     }
   },
+
+  productInfo: null,
+  setProductInfo: (value) => set({ productInfo: value}),
+  fetchProductInfo: async (id) => {
+    try {
+      const response = await fetch(`http://localhost:8000/product/${id}`);
+      const data = await response.json();
+      set({ productInfo: data });
+    } catch (error) {
+      console.error('Error fetching product info:', error);
+    }
+  },
 }));
 
 export default useStore;
