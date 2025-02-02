@@ -1,8 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import { useParams } from 'react-router-dom'
 import useStore from '../stores/store'
-import GoBackBtn from '../components/GoBackBtn'
-import Loader from '../components/Loader'
 
 function ProductPage() {
   const { id } = useParams();
@@ -18,15 +16,16 @@ function ProductPage() {
     });
   }, [id, fetchProductInfo]);
 
-  if (!productInfo) return <div className="flex justify-center items-center min-h-screen"><Loader /></div>;
-
+  if (!productInfo) {
+    return <div className="flex justify-center items-center min-h-screen">Loading...</div>;
+  }
+  
   return (
     <div className="">
-      <GoBackBtn />
       <div className="w-5/6 md:w-2/3 mx-auto flex flex-col min-[1000px]:flex-row justify-center gap-10">
         {/* Product Image */}
         <div className="w-full min-[1000px]:w-1/3">
-          <img src={productInfo.product_img || "/productPic.png"} alt="" className="mx-auto" />
+          <img src="/productPic.png"  alt="" className="mx-auto" />
         </div>
 
         {/* Product Details */}
@@ -97,37 +96,6 @@ function ProductPage() {
                 </div>
               )}
             </div>
-          </div>
-        </div>
-      </div>
-
-      {/* Store Links */}
-      <div className="w-5/6 md:w-2/3 mx-auto mt-40 space-y-10 mb-20">
-        <div className="bg-[#FFDFE9] w-full rounded-md flex flex-row p-4 justify-between items-center">
-          <div>Logo</div>
-          <div className="flex flex-row space-x-5 items-center">
-            <p>95kr</p>
-            <button className="bg-white text-black p-2 items-center hover:bg-gray-100 transition-colors duration-300">
-              Go to store
-            </button>
-          </div>
-        </div>
-        <div className="bg-[#FFDFE9] w-full rounded-md flex flex-row p-4 justify-between items-center">
-          <div>Logo</div>
-          <div className="flex flex-row space-x-5 items-center">
-            <p>95kr</p>
-            <button className="bg-white text-black p-2 items-center hover:bg-gray-100 transition-colors duration-300">
-              Go to store
-            </button>
-          </div>
-        </div>
-        <div className="bg-[#FFDFE9] w-full rounded-md flex flex-row p-4 justify-between items-center">
-          <div>Logo</div>
-          <div className="flex flex-row space-x-5 items-center">
-            <p>95kr</p>
-            <button className="bg-white text-black p-2 items-center hover:bg-gray-100 transition-colors duration-300">
-              Go to store
-            </button>
           </div>
         </div>
       </div>

@@ -19,8 +19,9 @@ function DisplayResult() {
   }
 
   const handleProductClick = (productId) => {
-    window.open(`/product/${productId}`, '_blank');
-  }
+    window.open(`${window.location.origin}/product/${productId}`, '_blank');
+  };
+  
 
   return (
     <div className="w-11/12 sm:w-3/4 mx-auto mb-20 mt-20">
