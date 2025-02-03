@@ -23,10 +23,10 @@ function HaircareRoutineGenerator() {
   const productComponents = {
     'shampoo': Shampoo,
     'conditioner': Conditioner,
-    'hair-oil': HairOil,
-    'scalp-serum': ScalpSerum,
-    'hair-serum': HairSerum,
-    'scalp-scrub': ScalpScrub
+    'hair oil': HairOil,
+    'scalp serum': ScalpSerum,
+    'hair serum': HairSerum,
+    'scalp scrub': ScalpScrub
   };
   
   const slides = [
@@ -40,7 +40,7 @@ function HaircareRoutineGenerator() {
     },
     ...formData.selectedProducts.map(product => ({
       component: React.createElement(productComponents[product]),
-      title: `Choose Focus Area for ${product.split('-').map(word => word.charAt(0).toUpperCase() + word.slice(1)).join(' ')}`,
+      title: `Choose Focus Area for ${product.split(' ').map(word => word.charAt(0).toUpperCase() + word.slice(1)).join(' ')}`,
     })),
     {
       component: <LastSlide />,

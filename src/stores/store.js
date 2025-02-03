@@ -33,22 +33,57 @@ const useStore = create((set, get) => ({
   recommendations: [],
   setRecommendations: (value) => set({ recommendations: value}),
   
-  updateMainRecommendation: (productType, newProduct) => 
+  updateMainRecommendation: async (productType, newProduct) => {
+    const { formData } = get();
     set((state) => {
       const updatedRecommendations = { ...state.recommendations };
       if (updatedRecommendations.recommendations) {
-        const oldMain = updatedRecommendations.recommendations[productType].main_recommendation;
-        updatedRecommendations.recommendations[productType].main_recommendation = newProduct;        
-        updatedRecommendations.recommendations[productType].similar_products = 
-          updatedRecommendations.recommendations[productType].similar_products
-            .filter(p => p.id !== newProduct.id)
-            .concat([oldMain]); 
+        // Uppdatera huvudrekommendationen direkt
+        updatedRecommendations.recommendations[productType].main_recommendation = newProduct;
       }
       return { recommendations: updatedRecommendations };
-    }),
+    });
+
+    // Hämta nya rekommendationer för denna produkttyp
+    try {
+      const response = await fetch("http://localhost:8000/product-recommendations", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          hair_porosity: formData.hairPorosity,
+          product_type: productType,
+          focus_area: formData.selectedFocus[productType],
+          current_product_id: newProduct.id  // För att undvika att få samma produkt igen
+        })
+      });
+
+      const data = await response.json();
+      console.log(data);
+      
+      
+      // Uppdatera similar_products för denna produkttyp
+      set((state) => {
+        const updatedRecommendations = { ...state.recommendations };
+        if (updatedRecommendations.recommendations) {
+          updatedRecommendations.recommendations[productType].similar_products = data.similar_products;
+        }
+        return { recommendations: updatedRecommendations };
+      });
+    } catch (error) {
+      set({ errorMsg: "Failed to fetch new recommendations" });
+    }
+  },
 
   fetchRecommendations: async () => {
     const { formData } = get();
+
+    const formattedFocus = {};
+    Object.entries(formData.selectedFocus).forEach(([type, focus]) => {
+      formattedFocus[type.replace(/-/g, ' ')] = focus;
+    });
+
     try {
       const response = await fetch("http://localhost:8000/recommendations", {
         method: "POST",
@@ -57,7 +92,7 @@ const useStore = create((set, get) => ({
         },
         body: JSON.stringify({
           hair_porosity: formData.hairPorosity,
-          product_focus: formData.selectedFocus
+          product_focus: formattedFocus
         })
       });
 

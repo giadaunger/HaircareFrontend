@@ -5,7 +5,7 @@ function HairSerum() {
   const { formData, updateFormField } = useStore();
 
   const focusAreas = [
-    "Anti-frizz",
+    "Frizz control",
     "Heat protection",
     "Split end repair",
     "Color protection",
